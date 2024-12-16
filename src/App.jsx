@@ -12,11 +12,11 @@ import UserDashboard from "./assets/Pages/UserDahboard";
 import AdminDashboard from "./assets/Pages/Admin/AdminDashboard";
 import AddProductPage from "./assets/Pages/Admin/AddProductPage";
 import UpdateProductPage from "./assets/Pages/Admin/UpdateProductPage";
-import MyState from "./context/myState";
+// import MyState from "./context/myState";
 
 const App = () => {
   return (
-    <MyState>
+    // <MyState>
       <Routes>
         {/* <ScrollTop /> */}
         <Route path="/" element={<HomePage />} />
@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/addproduct" element={<AddProductPage />} />
         <Route path="/updateproduct" element={<UpdateProductPage/>} />
       </Routes>
-    </MyState>
+    // </MyState>
   );
 };
 

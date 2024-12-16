@@ -4,15 +4,23 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { FireBaseContext } from "./context/myContext.jsx";
+import {app} from "../src/assets/Firebase/firebaseConfig.js";
 // import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <FireBaseContext.Provider value={{app}}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </FireBaseContext.Provider>
+
+    {/* <BrowserRouter> */}
     {/* <ToastContainer> */}
 
-      <App />
+    {/* <App /> */}
     {/* </ToastContainer> */}
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </StrictMode>
 );

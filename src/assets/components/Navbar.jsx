@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa6";
 import SearchBar from "./SearchBar";
 import { MdLogout } from "react-icons/md";
+import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const navList = (
@@ -13,7 +14,7 @@ const Navbar = () => {
 
       {/* All Product */}
       <li>
-        <Link to={"/allproduct"}>All Product</Link>
+        <Link to={"/allproduct"}>All Product</Link> 
       </li>
 
       {/* Signup */}
@@ -65,7 +66,14 @@ const Navbar = () => {
           </Link>
           <div className="flex items-center space-x-2 p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-200 cursor-pointer">
             <MdLogout className="text-xl" />
-            <span className="font-semibold">Log Out</span>
+            <span className="font-semibold" onClick={()=>{
+const auth = getAuth();
+signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+            }}>Log Out</span>
           </div>{" "}
         </div>
       </div>

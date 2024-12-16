@@ -2,7 +2,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../Firebase/firebaseConfig";
+import { auth, fireDB } from "../../Firebase/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -16,12 +17,18 @@ const Login = () => {
     .then((userCredential) => {
       
       const user = userCredential.user;
+      console.log(user)
   
     //   setUser(user)
   
-      console.log(user)
-      console.log("login successfully")
-      navigate('/')
+    const userRole = getDocs(collection(fireDB, "users"));
+
+    if (userRole === 'admin') {
+        navigate('/admin-dashboard');
+    } else {
+        navigate('/user-dashboard');
+    }
+
   
       // ...
     })
