@@ -6,7 +6,7 @@ import { auth, fireDB } from "../../Firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 const Login = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
 
     const [loginEmail,setLoginEmail]=useState()

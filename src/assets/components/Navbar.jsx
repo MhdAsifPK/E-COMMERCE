@@ -3,8 +3,13 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import SearchBar from "./SearchBar";
 import { MdLogout } from "react-icons/md";
 import { getAuth, signOut } from "firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "../../context/myContext";
 
 const Navbar = () => {
+
+  const {user}=useContext(AuthContext)
+  console.log(user)
   const navList = (
     <ul className="flex space-x-3 text-white font-medium text-md px-5 ">
       {/* Home */}
@@ -23,9 +28,9 @@ const Navbar = () => {
       </li>
 
       {/* User */}
-      {/* <li>
-                <Link to={'/user-dashboard'}>user</Link>
-            </li> */}
+      <li>
+                <Link to={'/user-dashboard'}>{user?user.displayName:"user"}</Link>
+            </li>
 
       {/* Admin */}
       {/* <li>
